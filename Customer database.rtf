@@ -1,0 +1,175 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang2057{\fonttbl{\f0\fnil Consolas;}{\f1\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green0\blue255;\red0\green0\blue0;\red128\green128\blue128;\red255\green0\blue255;\red255\green0\blue0;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\cf1\f0\fs19\lang9 create\cf2  \cf1 database\cf2  final_project1\par
+\cf1 use\cf2  final_project1\par
+\par
+\cf1 CREATE\cf2  \cf1 TABLE\cf2  CUSTOMER_DATA\par
+\cf3 (\cf2\par
+\tab CUSTOMER_ID_CUST \cf1 INT\cf2  \cf1 IDENTITY\cf3 (\cf2 100\cf3 ,\cf2  1\cf3 )\cf2  \cf1 PRIMARY\cf2  \cf1 KEY\cf3 ,\cf2\par
+\tab FIRST_NAME_CUST \cf1 VARCHAR\cf3 (\cf2 20\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\tab LAST_NAME_CUST \cf1 VARCHAR\cf3 (\cf2 20\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\tab DOB_CUST \cf1 DATE\cf2  \cf3 NOT\cf2  \cf3 NULL\cf2  \cf1 DEFAULT\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/02/2000'\cf3 ,\cf2 10\cf3 ),\cf2\par
+\tab PHONE_CUST \cf1 CHAR\cf3 (\cf2 12\cf3 )\cf2  \cf1 DEFAULT\cf2  \cf5 '***-***-****'\cf3 ,\cf2\par
+\tab EMAIL_ID_CUST \cf1 VARCHAR\cf3 (\cf2 70\cf3 )\cf2  \cf1 UNIQUE\cf2\par
+\cf3 );\cf2\par
+\par
+\cf1 CREATE\cf2  \cf1 TABLE\cf2  TABLE_HOME \par
+\cf3 (\cf2\par
+\tab HOME_ID_HME \cf1 INT\cf2  \cf1 IDENTITY\cf3 (\cf2 200\cf3 ,\cf2  1\cf3 ),\cf2\par
+\tab ADDRESS_OF_HME \cf1 VARCHAR\cf3 (\cf2 150\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\tab CITY_OF_HME \cf1 VARCHAR\cf3 (\cf2 50\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\tab COUNTRY_OF_HSE \cf1 VARCHAR\cf3 (\cf2 50\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\tab CUST_ID_HME \cf1 INT\cf2  \cf3 NOT\cf2  \cf3 NULL\cf2  \cf1 REFERENCES\cf2  CUSTOMER_DATA\cf1  \cf3 (\cf2 CUSTOMER_ID_CUST\cf3 ),\cf2\par
+\tab\cf1 CONSTRAINT\cf2  PK_KEY \cf1 PRIMARY\cf2  \cf1 KEY \cf3 (\cf2 HOME_ID_HME\cf3 ,\cf2  CUST_ID_HME\cf3 )\cf2\par
+\cf3 )\cf2\par
+\cf1 CREATE\cf2  \cf1 TABLE\cf2  WORK_ORDER \par
+\cf3 (\cf2\par
+\tab ORDER_ID_WORK \cf1 INT\cf2  \cf1 IDENTITY\cf3 (\cf2 300\cf3 ,\cf2  1\cf3 )\cf2  \cf1 PRIMARY\cf2  \cf1 KEY\cf3 ,\cf2\par
+\tab CUST_ID_WORK \cf1 INT\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\tab HOME_ID_WORK \cf1 INT\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\tab TYPE_0F_WORK \cf1 VARCHAR\cf3 (\cf2 20\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\tab CREATE_DATE_WORK \cf1 DATE\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\tab COMPLETED_DATE_WORK \cf1 DATE\cf2  \cf3 NOT\cf2  \cf3 NULL\cf2  \cf1 DEFAULT\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/02/2000'\cf3 ,\cf2 201\cf3 ),\cf2\par
+\tab STATUS_0F_WORK \cf1 VARCHAR\cf3 (\cf2 15\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\tab\cf1 CONSTRAINT\cf2  FK_KEY_WORK \cf1 FOREIGN\cf2  \cf1 KEY\cf3 (\cf2 HOME_ID_WORK\cf3 ,\cf2  CUST_ID_WORK\cf3 )\cf2  \cf1 REFERENCES\cf2  TABLE_HOME\cf3 (\cf2 HOME_ID_HME\cf3 ,\cf2  CUST_ID_HME\cf3 )\cf2\par
+\cf3 )\cf2\par
+\par
+\cf1 CREATE\cf2  \cf1 TABLE\cf2  COMPLAINT_ORDER \par
+\cf3 (\cf2\par
+ORDER_ID_COMPLAINT \cf1 INT\cf2  \cf1 IDENTITY\cf3 (\cf2 4000001\cf3 ,\cf2  1\cf3 )\cf2  \cf1 PRIMARY\cf2  \cf1 KEY\cf3 ,\cf2\par
+CUST_ID_COMPLAINT_ORDER \cf1 INT\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+HOME_ID_COMPLAINT_ORDER \cf1 INT\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+TYPE_COMPLAINT_ORDER \cf1 VARCHAR\cf3 (\cf2 20\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+CREATE_DATE_COMPLAINT_ORDER \cf1 DATE\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+COMPLETED_DATE_COMPLAINT_ORDER \cf1 DATE\cf2  \cf3 NOT\cf2  \cf3 NULL\cf2  \cf1 DEFAULT\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/02/2000'\cf3 ,\cf2 301\cf3 ),\cf2\par
+STATUS_COMPLAINT_ORDER \cf1 VARCHAR\cf3 (\cf2 15\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+\cf1 CONSTRAINT\cf2  FK_KEY_CO \cf1 FOREIGN\cf2  \cf1 KEY\cf3 (\cf2 HOME_ID_COMPLAINT_ORDER\cf3 ,\cf2  CUST_ID_COMPLAINT_ORDER\cf3 )\cf2  \cf1 REFERENCES\cf2  TABLE_HOME\cf3 (\cf2 HOME_ID_HME\cf3 ,\cf2  CUST_ID_HME\cf3 )\cf2\par
+\cf3 );\cf2\par
+\par
+\cf1 CREATE\cf2  \cf1 TABLE\cf2  ORDER_ITEM\cf1  \cf3 (\cf2\par
+ORDER_ID_ITEM \cf1 INT\cf2  \cf3 NOT\cf2  \cf3 NULL\cf2  \cf1 REFERENCES\cf2  WORK_ORDER\cf3 (\cf2 ORDER_ID_WORK\cf3 ),\cf2\par
+MODE_OF_ITEM \cf1 VARCHAR \cf3 (\cf2 30\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL,\cf2\par
+GENRERIC_ITEM \cf1 VARCHAR\cf3 (\cf2 20\cf3 )\cf2  \cf3 NOT\cf2  \cf3 NULL\cf2  \cf1 CHECK\cf3 (\cf2 GENRERIC_ITEM \cf3 IN\cf1  \cf3 (\cf5 'NEWS'\cf3 ,\cf2  \cf5 'MOVIE'\cf3 ,\cf2  \cf5 'SPORTS'\cf3 ,\cf2  \cf5 'MUSIC'\cf3 )),\cf2\par
+RATE_OF_ITEM \cf1 INT\cf2  \cf3 NOT\cf2  \cf3 NULL\cf2\par
+\cf3 );\cf2\par
+\cf1 insert\cf2  \cf1 into\cf2  CUSTOMER_DATA \cf1 values\cf3 (\cf5 'Kal'\cf3 ,\cf2  \cf5 'whitewood'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '09/07/1975'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '415-9170-276'\cf3 ,\cf2  \cf5 'kallie.blackwood@abc.com'\cf3 )\cf2\par
+\par
+\par
+\par
+\par
+\cf1 INSERT\cf2  \cf1 INTO\cf2  CUSTOMER_DATA \cf1 VALUES\cf2\par
+\cf3 (\cf5 'Kal'\cf3 ,\cf2  \cf5 'wood'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '07/08/1875'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '304-8061-165'\cf3 ,\cf2  \cf5 'kal.woo@acc.com'\cf3 ),\cf2  \par
+\cf3 (\cf5 'John'\cf3 ,\cf2  \cf5 'Abd'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '07/07/1898'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '808-5023-823'\cf3 ,\cf2  \cf5 'john_abd@acc.com'\cf3 ),\cf2\par
+\cf3 (\cf5 'Bob'\cf3 ,\cf2  \cf5 'Rym'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '08/8/1862'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '540-4804-467'\cf3 ,\cf2  \cf5 'boym@acc.com'\cf3 ),\cf2  \par
+\cf3 (\cf5 'Mica'\cf3 ,\cf2  \cf5 'Rym'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '07/04/1866'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '814-0081-218'\cf3 ,\cf2  \cf5 'mica_rym@acc.com'\cf3 ),\cf2\par
+\cf3 (\cf5 'Tam'\cf3 ,\cf2  \cf5 'Hoo'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '11/10/1855'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '630-0050-857'\cf3 ,\cf2  \cf5 'tamah@acc.com'\cf3 ),\cf2  \par
+\cf3 (\cf5 'Mon'\cf3 ,\cf2  \cf5 'Parl'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '01/06/1955'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '458-8241-722'\cf3 ,\cf2  \cf5 'mon@acc.com'\cf3 ),\cf2  \par
+\cf3 (\cf5 'La'\cf3 ,\cf2  \cf5 'Rei'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '03/05/1965'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '510-5652-372'\cf3 ,\cf2  \cf5 'la_rei@acc.com'\cf3 ),\cf2  \par
+\cf3 (\cf5 'Del'\cf3 ,\cf2  \cf5 'Crup'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/02/1876'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '452-6540-123'\cf3 ,\cf2  \cf5 'del.crup@acc.com'\cf3 ),\cf2\par
+\cf3 (\cf5 'yiv'\cf3 ,\cf2  \cf5 'Toe'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '05/05/1858'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '662-5615-644'\cf3 ,\cf2  \cf5 'yiv.toe@acc.com'\cf3 ),\cf2\par
+\cf3 (\cf5 'alza'\cf3 ,\cf2  \cf5 'Lip'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '08/04/1888'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '562-1254-233'\cf3 ,\cf2  \cf5 'elza@acc.com'\cf3 ),\cf2  \par
+\cf3 (\cf5 'Dev'\cf3 ,\cf2  \cf5 'Chic'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '01/04/1868'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '404-5347-744'\cf3 ,\cf2  \cf5 'dev@acc.com'\cf3 ),\cf2  \par
+\cf3 (\cf5 'Tim'\cf3 ,\cf2  \cf5 'Mulq'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '04/10/1957'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '607-5155-541'\cf3 ,\cf2  \cf5 'tim_mulq@acc.org'\cf3 ),\cf2\par
+\cf3 (\cf5 'Arlt'\cf3 ,\cf2  \cf5 'Hon'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '09/05/1950'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '815-6548-337'\cf3 ,\cf2  \cf5 'arlth@acc.com'\cf3 ),\cf2  \par
+\cf3 (\cf5 'Domi'\cf3 ,\cf2  \cf5 'Dick'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '07/02/1875'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '401-2156-266'\cf3 ,\cf2  \cf5 'domi.dick@acc.org'\cf3 ),\cf2  \par
+\cf3 (\cf5 'Lett'\cf3 ,\cf2  \cf5 'Isenh'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '08/08/1988'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '525-6618-855'\cf3 ,\cf2  \cf5 'lett_isen@acc.com'\cf3 ),\cf2\par
+\cf3 (\cf5 'Cor'\cf3 ,\cf2  \cf5 'Gibe'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '04/02/1994'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '525-7815-258'\cf3 ,\cf2  \cf5 'cor.gib@acc.com'\cf3 ),\cf2  \par
+\cf3 (\cf5 'Dan'\cf3 ,\cf2  \cf5 'Brus'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '04/07/1958'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '244-8656-554'\cf3 ,\cf2  \cf5 'dan_brus@acc.com'\cf3 ),\cf2  \par
+\cf3 (\cf5 'Wild'\cf3 ,\cf2  \cf5 'Gig'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '08/12/1985'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '506-6613-442'\cf3 ,\cf2  \cf5 'wildag@acc.net'\cf3 ),\cf2\par
+\cf3 (\cf5 'Elv'\cf3 ,\cf2  \cf5 'Ben'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '03/05/1958'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 '315-7619-561'\cf3 ,\cf2  \cf5 'elv.ben@acc.net'\cf3 )\cf2\par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2  CUSTOMER_DATA \par
+\par
+\par
+\cf1 INSERT\cf2  \cf1 INTO\cf2  TABLE_HOME  \cf1 VALUES\cf2\par
+\cf3 (\cf5 '1 south avenue'\cf3 ,\cf2  \cf5 'norma Point'\cf3 ,\cf2  \cf5 'fransfort'\cf3 ,\cf2  \cf5 '100'\cf3 ),\cf2  \par
+\cf3 (\cf5 '2 south park E'\cf3 ,\cf2  \cf5 'San house'\cf3 ,\cf2  \cf5 'LA'\cf3 ,\cf2  \cf5 '101'\cf3 ),\cf2  \par
+\cf3 (\cf5 '3 park avenue'\cf3 ,\cf2  \cf5 'Port'\cf3 ,\cf2  \cf5 'Washington DC'\cf3 ,\cf2  \cf5 '102'\cf3 ),\cf2  \par
+\cf3 (\cf5 '4 gardenview apartment'\cf3 ,\cf2  \cf5 'Carlog'\cf3 ,\cf2  \cf5 'Texas'\cf3 ,\cf2  \cf5 '103'\cf3 ),\cf2  \par
+\cf3 (\cf5 '2 Huntwood Ave'\cf3 ,\cf2  \cf5 'Phoenix'\cf3 ,\cf2  \cf5 'Maricopal'\cf3 ,\cf2  \cf5 '104'\cf3 ),\cf2  \par
+\cf3 (\cf5 '45 Parkview circle'\cf3 ,\cf2  \cf5 'Westborn'\cf3 ,\cf2  \cf5 'Winster '\cf3 ,\cf2  \cf5 '105'\cf3 ),\cf2  \par
+\cf3 (\cf5 '1 Nurioal point'\cf3 ,\cf2  \cf5 'ship'\cf3 ,\cf2  \cf5 'Essexexure'\cf3 ,\cf2  \cf5 '106'\cf3 ),\cf2  \par
+\cf3 (\cf5 '1 sabaha bhawan'\cf3 ,\cf2  \cf5 'gerry'\cf3 ,\cf2  \cf5 'ferry'\cf3 ,\cf2  \cf5 '107'\cf3 ),\cf2  \par
+\cf3 (\cf5 '14 mall centre'\cf3 ,\cf2  \cf5 'euro'\cf3 ,\cf2  \cf5 'euro'\cf3 ,\cf2  \cf5 '108'\cf3 ),\cf2  \par
+\cf3 (\cf5 '18 st pauls road'\cf3 ,\cf2  \cf5 'shell'\cf3 ,\cf2  \cf5 'Shell'\cf3 ,\cf2  \cf5 '109'\cf3 ),\cf2  \par
+\cf3 (\cf5 '34 west hall'\cf3 ,\cf2  \cf5 'shift'\cf3 ,\cf2  \cf5 'fargo'\cf3 ,\cf2  \cf5 '110'\cf3 ),\cf2\par
+\cf3 (\cf5 '78 clark bakery '\cf3 ,\cf2  \cf5 'forth worth'\cf3 ,\cf2  \cf5 'Palm tree'\cf3 ,\cf2  \cf5 '111'\cf3 ),\cf2  \par
+\cf3 (\cf5 '123 Brooks St'\cf3 ,\cf2  \cf5 'sanden'\cf3 ,\cf2  \cf5 'San den'\cf3 ,\cf2  \cf5 '112'\cf3 ),\cf2  \par
+\cf3 (\cf5 '145 Main Street'\cf3 ,\cf2  \cf5 'Flairbanks'\cf3 ,\cf2  \cf5 'Flairbanks North Star'\cf3 ,\cf2  \cf5 '113'\cf3 ),\cf2  \par
+\cf3 (\cf5 '159 silicon Valley Rd'\cf3 ,\cf2  \cf5 'Esconvida'\cf3 ,\cf2  \cf5 'San Diego'\cf3 ,\cf2  \cf5 '114'\cf3 ),\cf2  \par
+\cf3 (\cf5 '2048 Main Street hall '\cf3 ,\cf2  \cf5 'Scottland'\cf3 ,\cf2  \cf5 'Maricopios'\cf3 ,\cf2  \cf5 '115'\cf3 ),\cf2  \par
+\cf3 (\cf5 '2246 lionest street'\cf3 ,\cf2  \cf5 'hill chapel'\cf3 ,\cf2  \cf5 'Mango'\cf3 ,\cf2  \cf5 '116'\cf3 ),\cf2  \par
+\cf3 (\cf5 '1890 london street'\cf3 ,\cf2  \cf5 'Jackonsie'\cf3 ,\cf2  \cf5 'Diamond'\cf3 ,\cf2  \cf5 '117'\cf3 ),\cf2  \par
+\cf3 (\cf5 '1125 fallmeadow'\cf3 ,\cf2  \cf5 'university'\cf3 ,\cf2  \cf5 'Santa Clara'\cf3 ,\cf2  \cf5 '118'\cf3 ),\cf2  \par
+\cf3 (\cf5 '1890 W highland street'\cf3 ,\cf2  \cf5 'Santa cruz'\cf3 ,\cf2  \cf5 'Orange'\cf3 ,\cf2  \cf5 '119'\cf3 )\cf2\par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2  CUSTOMER_DATA \par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2  TABLE_HOME\par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2  WORK_ORDER\par
+ \par
+\par
+\cf1 INSERT\cf2  \cf1 INTO\cf2  WORK_ORDER \cf1 VALUES\cf2\par
+\cf3 (\cf5 '111'\cf3 ,\cf2  \cf5 '211'\cf3 ,\cf2  \cf5 'installation'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '7/8/2016'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '7/28/2017'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '112'\cf3 ,\cf2  \cf5 '212'\cf3 ,\cf2  \cf5 'installation'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '3/17/2012'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '5/18/2013'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '113'\cf3 ,\cf2  \cf5 '213'\cf3 ,\cf2  \cf5 'installation'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/18/2012'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '12/26/2013'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '114'\cf3 ,\cf2  \cf5 '214'\cf3 ,\cf2  \cf5 'installation'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '3/10/2009'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '1/25/2012'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '115'\cf3 ,\cf2  \cf5 '215'\cf3 ,\cf2  \cf5 'installation'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '1/5/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '5/11/2017'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '116'\cf3 ,\cf2  \cf5 '216'\cf3 ,\cf2  \cf5 'installation'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '09/25/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '11/25/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '117'\cf3 ,\cf2  \cf5 '217'\cf3 ,\cf2  \cf5 'installation'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '07/7/2009'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '12/8/2010'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '118'\cf3 ,\cf2  \cf5 '218'\cf3 ,\cf2  \cf5 'uninstallation'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '11/6/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/11/2017'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2\par
+\cf3 (\cf5 '119'\cf3 ,\cf2  \cf5 '219'\cf3 ,\cf2  \cf5 'uninstallation'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/5/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '11/11/2017'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 )\cf2\par
+ \cf1 select\cf2  \cf3 *\cf2   \cf1 from\cf2  WORK_ORDER \par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2  Customer_data \par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2   TABLE_HOME \par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2  ORDER_ITEM\par
+\par
+\cf1 INSERT\cf2  \cf1 INTO\cf2  ORDER_ITEM \cf1 VALUES\cf2\par
+\cf3 (\cf5 '301'\cf3 ,\cf2  \cf5 'NDTV'\cf3 ,\cf2  \cf5 'NEWS'\cf3 ,\cf2  25\cf3 ),\cf2  \par
+\cf3 (\cf5 '301'\cf3 ,\cf2  \cf5 'ZEE'\cf3 ,\cf2  \cf5 'MOVIE'\cf3 ,\cf2  30\cf3 ),\cf2  \par
+\cf3 (\cf5 '301'\cf3 ,\cf2  \cf5 'ESPN'\cf3 ,\cf2  \cf5 'SPORTS'\cf3 ,\cf2  27\cf3 ),\cf2  \par
+\cf3 (\cf5 '302'\cf3 ,\cf2  \cf5 'NDTV'\cf3 ,\cf2  \cf5 'NEWS'\cf3 ,\cf2  25\cf3 ),\cf2  \par
+\cf3 (\cf5 '302'\cf3 ,\cf2  \cf5 '9XM'\cf3 ,\cf2  \cf5 'MUSIC'\cf3 ,\cf2  24\cf3 ),\cf2  \par
+\cf3 (\cf5 '302'\cf3 ,\cf2  \cf5 'star pix'\cf3 ,\cf2  \cf5 'MOVIE'\cf3 ,\cf2  35\cf3 ),\cf2  \par
+\cf3 (\cf5 '302'\cf3 ,\cf2  \cf5 'ZEE'\cf3 ,\cf2  \cf5 'MOVIE'\cf3 ,\cf2  30\cf3 ),\cf2  \par
+\cf3 (\cf5 '303'\cf3 ,\cf2  \cf5 'NDTV'\cf3 ,\cf2  \cf5 'NEWS'\cf3 ,\cf2  25\cf3 ),\cf2  \par
+\cf3 (\cf5 '303'\cf3 ,\cf2  \cf5 'ESPN'\cf3 ,\cf2  \cf5 'SPORTS'\cf3 ,\cf2  27\cf3 ),\cf2  \par
+\cf3 (\cf5 '304'\cf3 ,\cf2  \cf5 'NDTV'\cf3 ,\cf2  \cf5 'NEWS'\cf3 ,\cf2  25\cf3 ),\cf2  \par
+\cf3 (\cf5 '304'\cf3 ,\cf2  \cf5 '9XM'\cf3 ,\cf2  \cf5 'MUSIC'\cf3 ,\cf2  24\cf3 ),\cf2  \par
+\cf3 (\cf5 '304'\cf3 ,\cf2  \cf5 'ZEE'\cf3 ,\cf2  \cf5 'MOVIE'\cf3 ,\cf2  30\cf3 ),\cf2  \par
+\cf3 (\cf5 '305'\cf3 ,\cf2  \cf5 'NDTV'\cf3 ,\cf2  \cf5 'NEWS'\cf3 ,\cf2  25\cf3 ),\cf2  \par
+\cf3 (\cf5 '305'\cf3 ,\cf2  \cf5 'star pix'\cf3 ,\cf2  \cf5 'MOVIE'\cf3 ,\cf2  35\cf3 ),\cf2  \par
+\cf3 (\cf5 '305'\cf3 ,\cf2  \cf5 'ZEE'\cf3 ,\cf2  \cf5 'MOVIE'\cf3 ,\cf2  30\cf3 ),\cf2  \par
+\cf3 (\cf5 '305'\cf3 ,\cf2  \cf5 'ESPN'\cf3 ,\cf2  \cf5 'SPORTS'\cf3 ,\cf2  27\cf3 ),\cf2  \par
+\cf3 (\cf5 '306'\cf3 ,\cf2  \cf5 'ESPN'\cf3 ,\cf2  \cf5 'SPORTS'\cf3 ,\cf2  27\cf3 ),\cf2  \par
+\cf3 (\cf5 '307'\cf3 ,\cf2  \cf5 '9XM'\cf3 ,\cf2  \cf5 'MUSIC'\cf3 ,\cf2  24\cf3 ),\cf2  \par
+\cf3 (\cf5 '307'\cf3 ,\cf2  \cf5 'ZEE'\cf3 ,\cf2  \cf5 'MOVIE'\cf3 ,\cf2  30\cf3 ),\cf2  \par
+\cf3 (\cf5 '308'\cf3 ,\cf2  \cf5 'NDTV'\cf3 ,\cf2  \cf5 'NEWS'\cf3 ,\cf2  25\cf3 )\cf2\par
+\par
+\cf1 INSERT\cf2  \cf1 INTO\cf2  COMPLAINT_ORDER \cf1 VALUES\cf2\par
+\cf3 (\cf5 '100'\cf3 ,\cf2  \cf5 '200'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '4/09/2012'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/09/2012'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '101'\cf3 ,\cf2  \cf5 '201'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '12/29/2017'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '1/1/2000'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'OPEN'\cf3 ),\cf2  \par
+\cf3 (\cf5 '102'\cf3 ,\cf2  \cf5 '202'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '2/21/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '2/22/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '103'\cf3 ,\cf2  \cf5 '203'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '4/16/2013'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '4/20/2013'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '104'\cf3 ,\cf2  \cf5 '204'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '8/24/2013'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '8/29/2013'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '105'\cf3 ,\cf2  \cf5 '205'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '2/22/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '2/26/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '106'\cf3 ,\cf2  \cf5 '206'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '12/25/2017'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '1/1/2000'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'OPEN'\cf3 ),\cf2  \par
+\cf3 (\cf5 '107'\cf3 ,\cf2  \cf5 '207'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '6/21/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '6/26/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '108'\cf3 ,\cf2  \cf5 '208'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '9/30/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/1/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '109'\cf3 ,\cf2  \cf5 '209'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '5/5/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '5/8/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '110'\cf3 ,\cf2  \cf5 '210'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '9/15/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '9/16/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '111'\cf3 ,\cf2  \cf5 '211'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '5/19/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '5/23/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '112'\cf3 ,\cf2  \cf5 '212'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '3/30/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '4/4/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '113'\cf3 ,\cf2  \cf5 '213'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/2/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/7/2014'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '114'\cf3 ,\cf2  \cf5 '214'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/15/2013'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '10/19/2013'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '115'\cf3 ,\cf2  \cf5 '215'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '4/6/2012'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '4/8/2012'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '116'\cf3 ,\cf2  \cf5 '216'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '12/25/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '12/28/2015'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '117'\cf3 ,\cf2  \cf5 '217'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '11/5/2011'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '11/8/2011'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 ),\cf2  \par
+\cf3 (\cf5 '118'\cf3 ,\cf2  \cf5 '218'\cf3 ,\cf2  \cf5 'COMPLAINT'\cf3 ,\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '12/27/2016'\cf3 ,\cf2  101\cf3 ),\cf2  \cf4 CONVERT\cf3 (\cf1 DATE\cf3 ,\cf2  \cf5 '12/28/2016'\cf3 ,\cf2  101\cf3 ),\cf2  \cf5 'CLOSE'\cf3 )\cf2\par
+\par
+\par
+ \cf1 select\cf2  \cf3 *\cf2   \cf1 from\cf2  WORK_ORDER \par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2  Customer_data \par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2   TABLE_HOME \par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2  ORDER_ITEM\par
+\cf1 select\cf2  \cf3 *\cf2  \cf1 from\cf2  COMPLAINT_ORDER\cf0\f1\fs22\par
+}
+ 
